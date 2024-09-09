@@ -1,0 +1,62 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    string title;
+    string author;
+    int pages;
+    float price;
+
+public:
+    // Constructor to initialize the attributes
+    Book(string t, string a, int p, float pr) {
+        title = t;
+        author = a;
+        pages = p;
+        price = pr;
+    }
+
+    // Method to display the information of the book in a formatted string
+    void displayInfo() const {
+        cout << "Title: " << title << endl;
+        cout << "Author: " << author << endl;
+        cout << "Pages: " << pages << endl;
+        cout << "Price: $" << price << endl;
+    }
+
+    // Method that applies a discount to the price of the book
+     void applyDiscount(float discountPercent) {
+        price -= (price * discountPercent / 100);
+        cout << "Price after " << discountPercent << "% discount: $" << price << endl;
+    }
+};
+int main() {
+    // Create three objects of the Book class
+    Book book1("The Catcher in the Rye", "J.D. Salinger", 214, 9.99);
+    Book book2("To Kill a Mockingbird", "Harper Lee", 336, 7.99);
+    Book book3("1984", "George Orwell", 328, 8.99);
+
+    // Display the information of each book
+    cout << "Book 1 details:" << endl;
+    book1.displayInfo();
+    cout << endl;
+
+    cout << "Book 2 details:" << endl;
+    book2.displayInfo();
+    cout << endl;
+
+    cout << "Book 3 details:" << endl;
+    book3.displayInfo();
+    cout << endl;
+
+    // Apply a 10% discount to each book and display the new price
+   cout << "After applying a 10% discount:" << endl;
+    cout << endl;
+    book1.applyDiscount(10);
+    book2.applyDiscount(10);
+    book3.applyDiscount(10);
+
+    return 0;
+}

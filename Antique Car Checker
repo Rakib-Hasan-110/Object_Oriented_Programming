@@ -1,0 +1,86 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Car {
+private:
+    string make;
+    string model;
+    int year;
+    float price;
+
+public:
+    // Constructor to initialize the attributes
+    Car(string mk, string mdl, int yr, float pr) {
+        make = mk;
+        model = mdl;
+        year = yr;
+        price = pr;
+    }
+
+    // Method to display the information of the car
+    void displayInfo() {
+        cout << "Make: " << make << endl;
+        cout << "Model: " << model << endl;
+        cout << "Year: " << year << endl;
+        cout << "Price: $" << price << endl;
+    }
+
+    // Method to apply a depreciation rate to the price
+    void applyDepreciation(float rate) {
+        price -= (price * rate / 100);
+    }
+
+    // Method to check if the car is an antique
+    bool isAntique(int currentYear) {
+        return (currentYear - year) > 25;
+    }
+};
+
+int main() {
+    // Creating three Car objects
+    Car car1("Toyota", "Corolla", 1995, 15000);
+    Car car2("Ford", "Mustang", 2010, 30000);
+    Car car3("Chevrolet", "Impala", 1960, 20000);
+
+    // Displaying information of each car
+    cout << "Car 1 Information:" << endl;
+    car1.displayInfo();
+    cout << endl;
+
+    cout << "Car 2 Information:" << endl;
+    car2.displayInfo();
+    cout << endl;
+
+    cout << "Car 3 Information:" << endl;
+    car3.displayInfo();
+    cout << endl;
+
+    // Applying depreciation
+    cout << "Applying 10% depreciation to Car 1 and Car 2:" << endl;
+    car1.applyDepreciation(10);
+    car2.applyDepreciation(10);
+    car3.applyDepreciation(10);
+
+    // Displaying updated information
+    cout << "Car 1 Information after depreciation:" << endl;
+    car1.displayInfo();
+    cout << endl;
+
+    cout << "Car 2 Information after depreciation:" << endl;
+    car2.displayInfo();
+    cout << endl;
+
+    cout << "Car 3 Information after depreciation:" << endl;
+    car3.displayInfo();
+    cout << endl;
+    
+    // Checking if the cars are antique
+    int currentYear = 2024;
+    cout << "Is Car 1 an antique? " << (car1.isAntique(currentYear) ? "Yes" : "No") << endl;
+    cout << "Is Car 2 an antique? " << (car2.isAntique(currentYear) ? "Yes" : "No") << endl;
+    cout << "Is Car 3 an antique? " << (car3.isAntique(currentYear) ? "Yes" : "No") << endl;
+
+    return 0;
+}

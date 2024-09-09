@@ -1,0 +1,54 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+// Base class Shape
+class Shape {
+protected:
+    string color;
+public:
+    // Constructor to initialize color
+    Shape(string c) : color(c) {}
+
+    // Method to display the color of the shape
+    virtual void display() {
+        cout << "Color: " << color << endl;
+    }
+};
+
+// Derived class Circle from Shape
+class Circle : public Shape {
+private:
+    float radius;
+public:
+    // Constructor to initialize color and radius
+    Circle(string c, float r) : Shape(c), radius(r) {}
+
+    // Method to calculate and return the area of the circle
+    float getArea() {
+        return M_PI * radius * radius;
+    }
+
+    // Method to calculate and return the circumference of the circle
+    float getCircumference() {
+        return 2 * M_PI * radius;
+    }
+
+    // Method to display the information of the circle, overriding the method from the base class
+    void display() override {
+        Shape::display();//Calls Shape::display() to show the color.
+        cout << "Radius: " << radius << endl;
+        cout << "Area: " << getArea() << endl;
+        cout << "Circumference: " << getCircumference() << endl;
+    }
+};
+
+int main() {
+    // Create an object of the Circle class
+    Circle circle("Red", 5.0);
+
+    // Demonstrate the usage of its methods
+    circle.display();
+
+    return 0;
+}
